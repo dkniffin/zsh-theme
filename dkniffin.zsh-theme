@@ -40,4 +40,4 @@ function ruby_version {
   echo "[%{$reset_color%}%{$fg[$ruby_color]%}RB:$rbversion%{$reset_color%}]"
 }
 
-PROMPT='%(?..%{$fg_bold[red]%}✘%s) $(path) $(ruby_version) $(js_version) $(custom_git_prompt)%{$reset_color%} > '
+PROMPT='%(?..%{$fg_bold[red]%}✘ %s)$(path) $(ruby_version) $(js_version) $(custom_git_prompt)%{$reset_color%} > '
