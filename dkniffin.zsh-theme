@@ -1,5 +1,5 @@
 path_color="blue"
-# js_color="yellow"
+js_color="yellow"
 ruby_color="red"
 
 function path {
