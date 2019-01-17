@@ -3,7 +3,7 @@ path_color="blue"
 ruby_color="red"
 
 function path {
-  echo "%{$reset_color%}%{$fg[$path_color]%}%~%{$reset_color%} "
+  echo "%{$reset_color%}%{$fg[$path_color]%}%~%{$reset_color%}"
 }
 
 ZSH_THEME_GIT_PROMPT_PREFIX="⎇ "
@@ -39,4 +39,4 @@ function ruby_version {
   echo "[%{$reset_color%}%{$fg[$ruby_color]%}$rbversion%{$reset_color%}]"
 }
 
-PROMPT='%(?..%{$fg_bold[red]%}✘ %s)$(path)$(ruby_version)$(custom_git_prompt)%{$reset_color%} > '
+PROMPT='%(?..%{$fg_bold[red]%}✘ %s) $(path) $(ruby_version) $(custom_git_prompt)%{$reset_color%} > '
