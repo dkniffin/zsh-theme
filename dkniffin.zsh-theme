@@ -30,13 +30,14 @@ function custom_git_prompt {
   fi
 }
 
-# function js_version {
-#   echo "[%{$reset_color%}%{$fg[$ruby_color]%}$rbversion%{$reset_color%}]"
-# }
+function js_version {
+  local jsversion=$(nvm --version)    
+  echo "[%{$reset_color%}%{$fg[$js_color]%}$jsversion%{$reset_color%}]"
+}
 
 function ruby_version {
   local rbversion=$(ruby -e 'print RUBY_VERSION')
   echo "[%{$reset_color%}%{$fg[$ruby_color]%}$rbversion%{$reset_color%}]"
 }
 
-PROMPT='%(?..%{$fg_bold[red]%}✘ %s) $(path) $(ruby_version) $(custom_git_prompt)%{$reset_color%} > '
+PROMPT='%(?..%{$fg_bold[red]%}✘ %s) $(path) $(ruby_version) $(js_version) $(custom_git_prompt)%{$reset_color%} > '
