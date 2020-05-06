@@ -1,5 +1,6 @@
 path_color="blue"
 ruby_color="red"
+wip_color="yellow"
 
 function path {
   echo "%{$reset_color%}%{$fg[$path_color]%}%~%{$reset_color%}"
@@ -9,6 +10,17 @@ ZSH_THEME_GIT_PROMPT_PREFIX="⎇ "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY="dirty"
 ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE="ahead"
+
+function wip_warning {
+  git log -1 --pretty=%B | grep "WIP" > /dev/null
+  if [[ $? == 0 ]]; then
+    local color="%{$fg[$wip_color]%}"
+    local text="⚠️  WIP"
+    echo "%{$reset_color%}$color$text%{$reset_color%}"
+  else
+    return ""
+  fi
+}
 
 function custom_git_prompt {
   local current_branch=$(git symbolic-ref --short -q HEAD 2>/dev/null)
@@ -25,7 +37,7 @@ function custom_git_prompt {
       local color="%{$fg[green]%}"
     fi
 
-    echo "(%{$reset_color%}$color$prompt%{$reset_color%})"
+    echo "(%{$reset_color%}$color$prompt%{$reset_color%} $(wip_warning))"
   fi
 }
 
