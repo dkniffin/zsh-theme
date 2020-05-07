@@ -15,7 +15,7 @@ function wip_warning {
   git log -1 --pretty=%B | grep "WIP" > /dev/null
   if [[ $? == 0 ]]; then
     local color="%{$fg[$wip_color]%}"
-    local text="⚠️  WIP"
+    local text=" ⚠️  WIP"
     echo "%{$reset_color%}$color$text%{$reset_color%}"
   else
     return ""
@@ -37,7 +37,7 @@ function custom_git_prompt {
       local color="%{$fg[green]%}"
     fi
 
-    echo "(%{$reset_color%}$color$prompt%{$reset_color%} $(wip_warning))"
+    echo "(%{$reset_color%}$color$prompt%{$reset_color%}$(wip_warning))"
   fi
 }
 
